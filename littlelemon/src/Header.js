@@ -1,7 +1,10 @@
+import Nav from "./Nav";
+
 function Header() {
   return (
-    <header>
+    <header className='header'>
       <img src='assets/Logo.svg' alt='Logo' />
+      <Nav />
     </header>
   );
 }

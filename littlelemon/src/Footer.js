@@ -1,10 +1,14 @@
 function Footer() {
   return (
-    <footer>
-      <img src='assets/Logo.svg' alt='Logo' />
+    <footer className='footer'>
+      <div className='footerLogo'>
+        <img src='assets/Logo.svg' alt='Logo' />
+      </div>
       <nav>
-        <p>Doormat Navigation</p>
-        <ul>
+        <p className='sectionTitle' style={{ color: "#495e57" }}>
+          Doormat Navigation
+        </p>
+        <ul className='leadText'>
           <li>
             <a href='/'>Home</a>
           </li>
@@ -26,8 +30,10 @@ function Footer() {
         </ul>
       </nav>
       <nav>
-        <p>Contact</p>
-        <ul>
+        <p className='sectionTitle' style={{ color: "#495e57" }}>
+          Contact
+        </p>
+        <ul className='leadText'>
           <li>
             <a href='/'>Address</a>
           </li>
@@ -40,8 +46,10 @@ function Footer() {
         </ul>
       </nav>
       <nav>
-        <p>Social Media Links</p>
-        <ul>
+        <p className='sectionTitle' style={{ color: "#495e57" }}>
+          Social Media Links
+        </p>
+        <ul className='leadText'>
           <li>
             <a href='/'>Address</a>
           </li>
