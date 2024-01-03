@@ -1,6 +1,6 @@
 function About() {
   return (
-    <div className='about'>
+    <div className='about' id='about-section'>
       <div style={{ padding: "30px 0px" }} className='quarterColumn'>
         <div className='displayTitle'>Little Lemon</div>
         <div className='subtitle'>Chicago</div>

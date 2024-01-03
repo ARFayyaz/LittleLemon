@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Footer() {
   return (
     <footer className='footer'>
@@ -10,22 +12,22 @@ function Footer() {
         </p>
         <ul className='leadText'>
           <li>
-            <a href='/'>Home</a>
+            <Link to='/'>Home</Link>
           </li>
           <li>
-            <a href='/about'>About</a>
+            <Link to='/#about-section'>About</Link>
           </li>
           <li>
-            <a href='/menu'>Menu</a>
+            <Link to='/menu'>Menu</Link>
           </li>
           <li>
-            <a href='/reservations'>Reservations</a>
+            <Link to='/reservations'>Reservations</Link>
           </li>
           <li>
-            <a href='/onlineorder'>Order Online</a>
+            <Link to='/onlineorder'>Order Online</Link>
           </li>
           <li>
-            <a href='/login'>Login</a>
+            <Link to='/login'>Login</Link>
           </li>
         </ul>
       </nav>

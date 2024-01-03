@@ -4,7 +4,7 @@ const Card = ({ imageUrl, title, price, description }) => {
       <img className='cardImage' src={imageUrl} alt={title} />
 
       <div className='cardBody'>
-        <div>
+        <>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <div className='cardTitle'>{title}</div>
             <div className='highlightText' style={{ color: "#ee9972" }}>
@@ -15,7 +15,7 @@ const Card = ({ imageUrl, title, price, description }) => {
           <div className='paragraphText' style={{ marginTop: "20px" }}>
             {description}
           </div>
-        </div>
+        </>
 
         <div style={{ display: "flex", alignItems: "center" }}>
           <div className='cardTitle' style={{ fontSize: "16px" }}>
