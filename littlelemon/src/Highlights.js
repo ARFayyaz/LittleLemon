@@ -3,7 +3,7 @@ import Card from "./components/Card";
 
 function Highlights() {
   return (
-    <div className='highlights'>
+    <section className='highlights' id='highlights-section'>
       <div className='highlightsHeading'>
         <div style={{ color: "#000000" }} className='subtitle quarterColumn'>
           This Week's Specials
@@ -41,7 +41,7 @@ function Highlights() {
           imageUrl={"assets/lemon dessert.jpg"}
         />
       </div>
-    </div>
+    </section>
   );
 }
 

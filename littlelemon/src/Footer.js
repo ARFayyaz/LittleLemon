@@ -18,16 +18,10 @@ function Footer() {
             <Link to='/#about-section'>About</Link>
           </li>
           <li>
-            <Link to='/menu'>Menu</Link>
+            <Link to='/#highlights-section'>Menu</Link>
           </li>
           <li>
             <Link to='/reservations'>Reservations</Link>
-          </li>
-          <li>
-            <Link to='/onlineorder'>Order Online</Link>
-          </li>
-          <li>
-            <Link to='/login'>Login</Link>
           </li>
         </ul>
       </nav>
@@ -40,10 +34,10 @@ function Footer() {
             <a href='/'>Address</a>
           </li>
           <li>
-            <a href='/about'>Phone</a>
+            <a href='/'>Phone</a>
           </li>
           <li>
-            <a href='/menu'>Email</a>
+            <a href='/'>Email</a>
           </li>
         </ul>
       </nav>
@@ -56,10 +50,10 @@ function Footer() {
             <a href='/'>Address</a>
           </li>
           <li>
-            <a href='/about'>Phone</a>
+            <a href='/'>Phone</a>
           </li>
           <li>
-            <a href='/menu'>Email</a>
+            <a href='/'>Email</a>
           </li>
         </ul>
       </nav>

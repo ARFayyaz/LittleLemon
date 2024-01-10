@@ -35,8 +35,13 @@ function Main() {
   }, []);
 
   const handleTimeUpdate = async (date) => {
-    let availableTimes = await fetchAPI(date);
-    dispatchTimeChange({ type: "SET_TIMES", payload: availableTimes });
+    try {
+      let availableTimes = await fetchAPI(date);
+      dispatchTimeChange({ type: "SET_TIMES", payload: availableTimes });
+    } catch (err) {
+      console.log(err);
+      dispatchTimeChange({ type: "SET_TIMES", payload: [] });
+    }
   };
 
   const submitForm = (formData) => {

@@ -1,6 +1,6 @@
 function About() {
   return (
-    <div className='about' id='about-section'>
+    <section className='about' id='about-section'>
       <div style={{ padding: "30px 0px" }} className='quarterColumn'>
         <div className='displayTitle'>Little Lemon</div>
         <div className='subtitle'>Chicago</div>
@@ -13,7 +13,7 @@ function About() {
         </div>
       </div>
 
-      <div
+      <figure
         style={{
           marginTop: "40px",
           zIndex: 1,
@@ -42,8 +42,8 @@ function About() {
             borderRadius: "8px",
           }}
         />
-      </div>
-    </div>
+      </figure>
+    </section>
   );
 }
 

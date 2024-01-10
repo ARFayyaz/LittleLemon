@@ -11,18 +11,12 @@ function Nav() {
           <Link to='/#about-section'>About</Link>
         </li>
         <li>
-          <Link to='/menu'>Menu</Link>
+          <Link to='/#highlights-section'>Menu</Link>
         </li>
         <li>
           <Link to='/reservations' data-testid='reservationsLink'>
             Reservations
           </Link>
-        </li>
-        <li>
-          <Link to='/onlineorder'>Order Online</Link>
-        </li>
-        <li>
-          <Link to='/login'>Login</Link>
         </li>
       </ul>
     </nav>

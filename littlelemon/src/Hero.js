@@ -2,9 +2,11 @@ import Button from "./components/Button";
 
 function Hero() {
   return (
-    <div className='hero'>
+    <section className='hero' aria-labelledby='main-title'>
       <div className='heroContentColumn'>
-        <div className='displayTitle'>Little Lemon</div>
+        <div id='main-title' className='displayTitle'>
+          Little Lemon
+        </div>
         <div className='subtitle'>Chicago</div>
         <div className='subtitle' style={{ marginTop: "20px" }}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -15,14 +17,14 @@ function Hero() {
         </div>
       </div>
 
-      <div className='heroImageColumn'>
+      <aside className='heroImageColumn'>
         <img
           src='assets/restauranfood.jpg'
           alt='Restaurant Food'
           style={{ height: "409px", borderRadius: "8px" }}
         />
-      </div>
-    </div>
+      </aside>
+    </section>
   );
 }
 

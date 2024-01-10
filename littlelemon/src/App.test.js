@@ -57,3 +57,58 @@ describe("updateTimes reducer", () => {
     expect(state).toEqual(initialState);
   });
 });
+
+describe("Reservation Form HTML Attributes", () => {
+  test("All input elements have HTML validation", () => {
+    const handleTimeUpdate = jest.fn();
+    const submitForm = jest.fn();
+    const availableTimes = ["09:00", "11:00", "12:00", "13:00", "14:00"];
+    const date = new Date();
+    const currentDate = date.toISOString().substring(0, 10);
+
+    render(
+      <BookingPage
+        availableTimes={availableTimes}
+        handleTimeUpdate={handleTimeUpdate}
+        submitForm={submitForm}
+      />
+    );
+
+    const dateInput = screen.getByLabelText("Date");
+    expect(dateInput).toHaveAttribute("min", currentDate);
+    expect(dateInput).toHaveAttribute("max", "2024-01-23");
+    expect(dateInput).toHaveAttribute("min", currentDate);
+
+    const guestsInput = screen.getByLabelText("Number of Guests");
+    expect(guestsInput).toHaveAttribute("min", "1");
+    expect(guestsInput).toHaveAttribute("max", "9");
+    expect(guestsInput).toHaveAttribute("required");
+  });
+});
+
+describe("Reservation Form Validation Logic", () => {
+  test("Form has proper validation functions", () => {
+    const handleTimeUpdate = jest.fn();
+    const submitForm = jest.fn();
+    const availableTimes = ["09:00", "11:00", "12:00", "13:00", "14:00"];
+    const date = new Date();
+    const currentDate = date.toISOString().substring(0, 10);
+
+    render(
+      <BookingPage
+        availableTimes={availableTimes}
+        handleTimeUpdate={handleTimeUpdate}
+        submitForm={submitForm}
+      />
+    );
+
+    const submitButton = screen.getByTestId("submitButton");
+
+    const guestsInput = screen.getByLabelText("Number of Guests");
+    fireEvent.change(guestsInput, { target: { value: "11" } });
+    fireEvent.click(submitButton);
+
+    expect(submitForm).not.toHaveBeenCalled();
+    expect(submitButton).toHaveAttribute("disabled");
+  });
+});

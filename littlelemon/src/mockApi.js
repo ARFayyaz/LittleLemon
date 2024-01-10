@@ -29,7 +29,7 @@ const fetchAPI = (date) => {
       if (availableTimesByDate[date]) {
         resolve(availableTimesByDate[date]);
       } else {
-        reject(new Error("No available times for the selected date."));
+        reject("No available times for the selected date.");
       }
     }, 1000);
   });

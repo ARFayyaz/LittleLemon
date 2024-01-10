@@ -67,6 +67,15 @@
     padding:10px;
   }
 
+  input:invalid {
+    border: 1px solid red
+  }
+
+  .errorMessage {
+    color: red;
+    margin-top: 0;
+  }
+
   .heroContentColumn {
     display: flex;
     flex-direction: column;

@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const BookingForm = ({ availableTimes, handleTimeUpdate, submitForm }) => {
-  var date = new Date();
-  var currentDate = date.toISOString().substring(0, 10);
+  const date = new Date();
+  const currentDate = date.toISOString().substring(0, 10);
 
   const [formData, setFormData] = useState({
     date: currentDate,
@@ -11,11 +11,14 @@ const BookingForm = ({ availableTimes, handleTimeUpdate, submitForm }) => {
     occasion: "",
   });
 
-  const [availableOccasions, setAvailableOccasions] = useState([
-    "Birthday",
-    "Anniversary",
-    "Christmas",
-  ]);
+  const availableOccasions = ["Birthday", "Anniversary", "Christmas"];
+
+  const [errorMessage, setErrorMessage] = useState({
+    date: "",
+    time: "",
+    guests: "",
+    occasion: "",
+  });
 
   const handleDateChange = (e) => {
     handleTimeUpdate(e.target.value);
@@ -27,6 +30,14 @@ const BookingForm = ({ availableTimes, handleTimeUpdate, submitForm }) => {
   };
 
   const handleGuestsChange = (e) => {
+    if (e.target.value > 9 || e.target.value < 1) {
+      setErrorMessage({
+        ...errorMessage,
+        guests: "Allowed guests between 1 and 9",
+      });
+    } else {
+      setErrorMessage({ ...errorMessage, guests: "" });
+    }
     setFormData({ ...formData, guests: e.target.value });
   };
 
@@ -38,6 +49,17 @@ const BookingForm = ({ availableTimes, handleTimeUpdate, submitForm }) => {
     e.preventDefault();
     submitForm(formData);
   };
+
+  useEffect(() => {
+    if (!availableTimes.length > 0) {
+      setErrorMessage((prevErrors) => ({
+        ...prevErrors,
+        date: "Date Not Available",
+      }));
+    } else {
+      setErrorMessage((prevErrors) => ({ ...prevErrors, date: "" }));
+    }
+  }, [availableTimes]);
 
   return (
     <div className='reservationForm'>
@@ -51,7 +73,18 @@ const BookingForm = ({ availableTimes, handleTimeUpdate, submitForm }) => {
           className='inputBox'
           value={formData.date}
           onChange={handleDateChange}
+          min={currentDate}
+          max={"2024-01-23"}
+          aria-label='Reservation Date'
+          aria-invalid={Boolean(errorMessage.date)}
+          aria-describedby={errorMessage.date ? "date-error" : undefined}
         />
+        {errorMessage.date && (
+          <p id='date-error' role='alert' className='errorMessage'>
+            {errorMessage.date}
+          </p>
+        )}
+
         <label htmlFor='res-time' className='cardTitle'>
           Time
         </label>
@@ -72,9 +105,10 @@ const BookingForm = ({ availableTimes, handleTimeUpdate, submitForm }) => {
               );
             })
           ) : (
-            <option data-testid='timeOption'>Please Select Date</option>
+            <option data-testid='timeOption'>Please Select Valid Date</option>
           )}
         </select>
+
         <label htmlFor='guests' className='cardTitle'>
           Number of Guests
         </label>
@@ -82,12 +116,23 @@ const BookingForm = ({ availableTimes, handleTimeUpdate, submitForm }) => {
           type='number'
           placeholder='1'
           min='1'
-          max='10'
+          max='9'
           id='guests'
+          name='guests'
           className='inputBox'
           value={formData.guests}
           onChange={handleGuestsChange}
+          required
+          aria-label='Number of Guests'
+          aria-invalid={Boolean(errorMessage.guests)}
+          aria-describedby={errorMessage.guests ? "guests-error" : undefined}
         />
+        {errorMessage.guests && (
+          <p id='guests-error' role='alert' className='errorMessage'>
+            {errorMessage.guests}
+          </p>
+        )}
+
         <label htmlFor='occasion' className='cardTitle'>
           Occasion
         </label>
@@ -101,11 +146,19 @@ const BookingForm = ({ availableTimes, handleTimeUpdate, submitForm }) => {
             return <option key={occasion}>{occasion}</option>;
           })}
         </select>
+
         <input
           type='submit'
+          data-testid='submitButton'
           value='Make Your Reservation'
           className='button cardTitle'
           onClick={handleSubmit}
+          disabled={
+            errorMessage.date ||
+            errorMessage.guests ||
+            errorMessage.time ||
+            errorMessage.occasion
+          }
         />
       </form>
     </div>
